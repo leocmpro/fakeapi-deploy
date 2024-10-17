@@ -1,6 +1,7 @@
 import secrets
 from apiflask import APIFlask, Schema
 from apiflask.fields import String
+from flask_cors import CORS
 
 
 app_id = secrets.token_urlsafe(5)
@@ -9,6 +10,8 @@ app = APIFlask(
     __name__,
     title=f'Fake API (App ID: {app_id})',
     version='1.0')
+
+CORS(app)
 
 
 class MessageOut(Schema):
